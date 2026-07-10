@@ -1,0 +1,23 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: product-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #mysql5.7不需要serverTimezone，但佳航也不报错
+    url: jdbc:mysql://localhost:3306/mall_db?useSSL=false&characterEncoding=utf8
+    username: root
+    password: root
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+ #mybatis-plus 打印sql
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
