@@ -12,3 +12,17 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+
+seata:
+  tx-service-group: my_test_tx_group # 事务分组名，可以自定义
+  registry:
+    type: nacos
+    nacos:
+      server-addr: localhost:8848
+      group: SEATA_GROUP
+      namespace: ""
+      username: "nacos"
+      password: "nacos"
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default # 将事务分组映射到 Seata 集群

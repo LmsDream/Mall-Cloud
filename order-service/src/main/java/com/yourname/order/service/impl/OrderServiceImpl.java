@@ -5,6 +5,7 @@ import com.yourname.order.entity.Order;
 import com.yourname.order.feign.ProductFeignClient;
 import com.yourname.order.mapper.OrderMapper;
 import com.yourname.order.service.OrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,16 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private ProductFeignClient productFeignClient;
 
-    @Transactional(rollbackFor = Exception.class)
+    //@Transactional(rollbackFor = Exception.class)
+    /**
+     * 如果接口出现异常使用
+     * @GlobalTransactional注解可以保证多个服务同时回滚
+     * @Transactional注解只能在单服务中进行回滚
+     * @param productId
+     * @param quantity
+     * @return
+     */
+    @GlobalTransactional(name = "create-order-tx", rollbackFor = Exception.class)
     @Override
     public Order createOrder(Long productId, Integer quantity) {
         //1、远程调用获取商品信息（主要获取商品单价）
@@ -48,6 +58,7 @@ public class OrderServiceImpl implements OrderService {
         if (rows<=0){
             throw new RuntimeException("订单插入失败！");
         }
+        int i = 1/0;
         log.info("订单创建成功，订单ID：{}，总价：{}",order.getId(),totalPrice);
         //这里可以插入订单表
         return order;

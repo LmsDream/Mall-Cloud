@@ -56,6 +56,7 @@ public class ShiroConfig {
         Map<String,String> filterChain = new LinkedHashMap<>();
         //登录接口必须放行
         filterChain.put("/api/auth/login","anon");
+        //放行 Feign 调用路径（order-service 远程调用）
         filterChain.put("/api/product/get/**","anon");
         filterChain.put("/api/product/deduct/**","anon");
         //所有其他的接口走JWT过滤器

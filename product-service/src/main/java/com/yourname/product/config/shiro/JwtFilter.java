@@ -15,7 +15,17 @@ public class JwtFilter extends BasicHttpAuthenticationFilter {
     protected  boolean isAccessAllowed(ServletRequest request, ServletResponse response,Object mappedValue){
 
         HttpServletRequest httpRequest = (HttpServletRequest) request;
+        String path = httpRequest.getRequestURI();
+        // 白名单路径放行（必须写在最前面）
+        if (path.startsWith("/api/auth/login") ||
+                path.startsWith("/api/product/get/**") ||
+                path.startsWith("/api/product/deduct/**")) {
+            return true;
+        }
         String token = httpRequest.getHeader("Authorization");
+        System.out.println("=== JwtFilter 拦截路径: " + path);
+        System.out.println("=== Authorization Header: " + token);
+
         if (token !=null && token.startsWith("Bearer")){
             token = token.substring(7);//去掉“Bearer”前缀
             try {
