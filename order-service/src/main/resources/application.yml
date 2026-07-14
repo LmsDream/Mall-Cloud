@@ -12,6 +12,13 @@ spring:
     nacos:
       discovery:
         server-addr: localhost:8848
+    sentinel:
+      transport:
+        dashboard: localhost:8718   # sentinel 控制台地址
+      eager: true                   # 取消懒加载，启动即注册
+feign:
+  sentinel:
+    enabled: true                   # 开启feign对sentinel的支持
 
 seata:
   tx-service-group: my_test_tx_group # 事务分组名，可以自定义

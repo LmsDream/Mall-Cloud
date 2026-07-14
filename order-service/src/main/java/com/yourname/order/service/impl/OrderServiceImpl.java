@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
         if (rows<=0){
             throw new RuntimeException("订单插入失败！");
         }
-        int i = 1/0;
+//        int i = 1/0;
         log.info("订单创建成功，订单ID：{}，总价：{}",order.getId(),totalPrice);
         //这里可以插入订单表
         return order;

@@ -63,6 +63,11 @@
             <artifactId>seata-spring-boot-starter</artifactId>
             <version>1.5.2</version> <!-- 保持与 Seata Server 版本一致 -->
         </dependency>
+        <!-- Sentinel -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

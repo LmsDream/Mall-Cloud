@@ -1,6 +1,6 @@
-package com.yourname.product.controller;
+package com.yourname.gateway.controller;
 
-import com.yourname.product.utils.JwtUtils;
+import com.yourname.gateway.utils.JwtUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;

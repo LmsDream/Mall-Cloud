@@ -1,4 +1,4 @@
-package com.yourname.product.utils;
+package com.yourname.gateway.utils;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

@@ -2,7 +2,6 @@ package com.yourname.product.controller;
 
 import com.yourname.product.entity.Product;
 import com.yourname.product.service.ProductService;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +15,6 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/list")
-    @RequiresAuthentication  //必须登录才能查商品信息
     public List<Product> list(){
         return productService.findAll();
     }

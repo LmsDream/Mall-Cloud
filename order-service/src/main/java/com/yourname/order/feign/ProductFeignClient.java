@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 
-@FeignClient(name = "product-service")
+@FeignClient(name = "product-service",fallbackFactory = ProductClientFallbackFactory.class)
 public interface ProductFeignClient {
 
     //1、扣库存
